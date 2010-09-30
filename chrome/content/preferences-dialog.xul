@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE window>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="psicotsi-config"
+ondialogaccept="PsicotsiPreferencesDialog.onDialogAccept();"
+   onload="PsicotsiPreferencesDialog.init();"
+    resizable="yes"
+    width="500px"
+    height="500px"
+   class="dialog"
+    persist="width height screenX screenY">
+
+<script type="application/x-javascript" src="chrome://psicotsi/content/window.js" />
+<script type="application/x-javascript" src="chrome://psicotsi/content/preferences-dialog.js" />
+
+<box flex="1" class="box">
+  <tabbox id="tabbox" flex="1" class="tabbox" align="start">
+    <tabs id="tabs">
+      <tab id="MainTab" onclick="PsicotsiPreferencesDialog.pref_show('main_list');"></tab>
+      <tab id="AboutTab" onclick="PsicotsiPreferencesDialog.pref_show('about_list');"></tab>
+    </tabs>
+
+    <tabpanels id="tabpanels" class="tabpanels" flex="1" style="width: 1240px;">
+            <!-- Main -->
+            <tabpanel style="overflow:auto;" class="panel" orient="vertical" flex="1" >
+              <vbox id="main_list" style="display:run-in" >
+
+    			     </vbox>
+            </tabpanel>
+        <!-- about -->
+            <tabpanel style="overflow:auto;" class="panel" orient="vertical" flex="1">
+    		     <vbox id="about_list" orient="vertical" style="display:run-in" >
+    		      <label id="Label_As_Is" control="INPUTAbou" style="font-weight:bold;" value="as is" />
+              <label value=" " />
+              <textbox id="INPUTAbout" flex="1" multiline="true" class="plain" style="height: 80px" readonly="true" value=" text box policy " />
+              <label id="psico-version-num" value="PsicoTSI version"/>
+              <label value="http://www.aldeaglobal.net/psicotsi/" 
+                      style="text-decoration: underline; cursor: pointer; color: blue;"
+                      tooltiptext="http://www.aldeaglobal.net/psicotsi/"
+                      onclick="window.opener.open('http://www.aldeaglobal.net/psicotsi/');" flex="0" />			
+              <label value=" " />
+			  </vbox>
+			</tabpanel>
+	</tabpanels>
+  </tabbox>
+</box>
+
+<vbox flex="0">
+  <hbox flex="1">
+    <button id="buttonSave"   oncommand="PsicotsiPreferencesDialog.onDialogAccept(); close();" />
+    <button id="buttonCancel" oncommand="close();" />
+  </hbox>
+</vbox>
+
+</window>

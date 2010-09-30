@@ -1,0 +1,5 @@
+content psicotsi jar:chrome/psicotsi.jar!/content/
+content	psicotsi jar:chrome/psicotsi.jar!/content/ contentaccessible=yes
+overlay chrome://browser/content/browser.xul chrome://psicotsi/content/psicotsi.xul
+
+skin	psicotsi	classic/1.0	jar:chrome/psicotsi.jar!/skin/

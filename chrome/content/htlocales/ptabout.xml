@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<about>
+
+<developers value="Developers">
+<label value="Re4Ver (121872)" />
+<label value="smates (1682965)" />
+<label value="Lizardopoli (1688296)" />
+<label value="" />
+</developers>
+
+<translations value="Translations">
+<label value="* Bosanski - ljushaff (1103875)" />
+<label value="* Čeština - smates (1682965)" />
+<label value="* Italiano - Lizardopoli (1688296)" />
+<label value="* Latviešu - VadimS (231207)" />
+<label value="* Svenska - murko (11598), Gahlster_HT31 (1132442)" />
+<label value="* Français - stephan57 (1751312)" />
+<label value="* Español - Re4Ver (121872)" />
+<label value="* Magyar - drideg (579834)" />
+<label value="* Nederlands - eekels (768188)" />
+<label value="* Vlaams - Jestar (513519)" />
+<label value="* Deutsch - DerKanzler (141589), Mod-spambot (333791)" />
+<label value="* Português (Brasil) - MarceloFBrandao (715122), Ruivao (1639784)" />
+<label value="* Hrvatski - _deda_ (884175)" />
+<!--<label value="* Suomi - " />-->
+<label value="* Español, Centroamericano - baler0 (26877)" />
+<label value="* Português - Mr_Nuno_Alves (1422600)" />
+<label value="* Slovenčina - LA-birmi (2976869)" />
+<label value="* Српски - ljushaff (1103875)" />
+<label value="* Ελληνικά - mtzan (277891)" />
+<label value="* Georgian - LA-George (710254)" />
+<label value="* български - Tonysd (660263)" />
+<label value="* Русский - VadimS (231207)" />
+<label value="* Українська - Grif_07 (527635)" />
+<label value="* Dansk - LasseSvendsen (1499168)" />
+<label value="* Türkçe - zubizaretta (1718694)" />
+<label value="* Polski - lemurek (1813780)" />
+</translations>
+
+</about>

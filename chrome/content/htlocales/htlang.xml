@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hattricklanguages>
+
+    <language name="en" desc="English"></language>
+    
+    <language name="cz" desc="Čeština"></language>	
+
+    <language name="it" desc="Italiano"></language>
+
+    <language name="fr" desc="Français"></language>
+
+    <language name="es" desc="Español"></language>
+
+    <language name="hu" desc="Magyar"></language>
+
+    <language name="nl-NL" desc="Nederlands"></language>
+
+    <language name="nl-BE" desc="Vlaams"></language>
+
+    <language name="de-DE" desc="Deutsch"></language>  
+     
+    <language name="pt-BR" desc="Português (Brasil)"></language> 
+
+    <language name="hr" desc="Hrvatski"></language>
+
+    <language name="fi" desc="Suomi"></language>
+
+    <language name="ru" desc="Русский"></language>
+
+    <language name="pt-PT" desc="Português"></language>
+
+    <language name="sk" desc="Slovenčina"></language>	
+
+    <language name="sr" desc="Српски"></language>
+
+    <language name="gr" desc="Ελληνικά"></language>
+
+    <language name="sv" desc="Svenska"></language>
+    
+    <language name="ka" desc="Georgian"></language>
+
+    <language name="bg" desc="български"></language>
+    
+    <language name="ua" desc="Українська"></language>
+    
+    <language name="dk" desc="Dansk"></language>
+    
+    <language name="lv" desc="Latviešu"></language>
+    
+    <language name="bs-BA" desc="Bosanski"></language>
+    
+    <language name="tr" desc="Türkçe"></language>
+    
+    <language name="es-CA" desc="Español, Centroamericano"></language>
+    
+    <language name="pl" desc="Polski"></language>
+</hattricklanguages>

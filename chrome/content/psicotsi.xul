@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE overlay>
+
+<overlay id="psicotsi"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<script type="application/x-javascript" src="chrome://psicotsi/content/window.js" />
+<script type="application/x-javascript" src="chrome://psicotsi/content/preferences-dialog.js" />
+
+<script type="text/javascript">
+    window.addEventListener( "load",function(){PsicotsiMain.registerOnPageLoad(document);},false );
+</script>
+
+<!-- Mozilla Tools menu -->
+<menupopup id="taskPopup">
+    <menuitem id="psicotsi-config-menu" oncommand="PsicotsiPreferencesDialog.configurePsicotsi();"/>
+</menupopup>
+    
+<!-- Firefox Tools menu -->
+<menupopup id="menu_ToolsPopup">
+    <menu id="hattricktools_menu" label="Hattrick">
+		<menupopup id="hattricktools_menupopup">
+			<menuitem id="psicotsi-config-menu" oncommand="PsicotsiPreferencesDialog.configurePsicotsi();"/>
+		</menupopup>
+	</menu>
+</menupopup>
+
+
+<statusbar id="status-bar">
+	<statusbarpanel id="psicotsi-status-bar-image" context="psicotsi-status-bar-menu">
+		<image id="psicotsi-status-bar-img"
+		       style="width:16px; height: 16px; cursor: pointer; list-style-image: url(chrome://psicotsi/skin/psicotsi.gif);"
+		       onload="Psicotsi.getStatusBar(event);"
+           tooltiptext="Psicotsi"
+			     onclick="PsicotsiPreferencesDialog.configurePsicotsi(event.button);"/>
+	</statusbarpanel>
+    <menupopup onload="Psicotsi.getStatusBar(event);" id="psicotsi-status-bar-menu">
+        <menuitem id="psicotsi_statusbar_config_menu" oncommand="PsicotsiPreferencesDialog.configurePsicotsi();"/>
+        <menuitem id="psicotsi_statusbar_reload" oncommand="PsicotsiService.load();" />
+        <menuitem id="psicotsi_statusbar_deactivate" oncommand="PsicotsiPreferencesDialog.deactivate();" type="checkbox" autocheck="true"/>
+   </menupopup>
+</statusbar>
+</overlay>
+

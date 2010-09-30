@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:id="{7E77F5DF-8022-40e3-9122-F03DEBEFC43B}"
+                   em:name="PsicoTSI"
+                   em:version="1.0.24"
+                   em:description="Predicts skills sub-levels using TSI"
+                   em:creator="Re4Ver, smates, Lizardopoli"
+                   em:homepageURL="http://www.psicotsi.com/"
+                   em:iconURL="chrome://psicotsi/skin/psicotsi.gif"
+                   em:optionsURL="chrome://psicotsi/content/preferences-dialog.xul"
+                   updateURL="https://www.mozdev.org/p/updates/psicotsi/{7E77F5DF-8022-40e3-9122-F03DEBEFC43B}/update.rdf"
+                   em:updateKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDGGut0fxfFMvXW3lrbweRlLWo67e4aUnuXGCtJeIpfBLPN3WPqLT66ramYmc4/MXK2zQ66/WC0eZ62H2l7eUrMWKjC0vb4ATYC+Ce8Pv5kLgGoco1cELfzPdUdIVhncOhhlhxhOXHv+OL5w1jQDM7IolnX/8LoZfQgTpHiQkMQnwIDAQAB">
+    <em:targetApplication RDF:resource="rdf:#$.gXb93"/>
+  </RDF:Description>
+  <RDF:Description RDF:about="rdf:#$.gXb93"
+                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   em:maxVersion="3.6.*"
+                   em:minVersion="2.0" />
+</RDF:RDF>
