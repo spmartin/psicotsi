@@ -1,6 +1,6 @@
-
-if (!Psicotsi) var Psicotsi={};
+if (!Psicotsi) var Psicotsi = {};
 Psicotsi.latestChangeCategories = {};
 Psicotsi.moduleCategories = {
-    MAIN : 'main',
-ABOUT : 'about'};
+    MAIN: 'main',
+    ABOUT: 'about'
+};

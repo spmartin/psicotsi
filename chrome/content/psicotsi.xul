@@ -21,25 +21,25 @@
 <menupopup id="menu_ToolsPopup">
     <menu id="hattricktools_menu" label="Hattrick">
 		<menupopup id="hattricktools_menupopup">
-			<menuitem id="psicotsi-config-menu" oncommand="PsicotsiPreferencesDialog.configurePsicotsi();"/>
+			<menuitem id="psicotsi-config-menu" oncommand="PsicotsiPreferencesDialog.configurePsicotsi(); PsicotsiMain.registerOnPageLoad(document);"/>
 		</menupopup>
 	</menu>
 </menupopup>
 
 
 <statusbar id="status-bar">
-	<statusbarpanel id="psicotsi-status-bar-image" context="psicotsi-status-bar-menu">
+	<statusbarpanel id="psicotsi-status-bar-panel" context="psicotsi-status-bar-menu">
 		<image id="psicotsi-status-bar-img"
-		       style="width:16px; height: 16px; cursor: pointer; list-style-image: url(chrome://psicotsi/skin/psicotsi.gif);"
-		       onload="Psicotsi.getStatusBar(event);"
-           tooltiptext="Psicotsi"
+          width="16"
+          height="16"
+           tooltiptext="PsicoTSI"
 			     onclick="PsicotsiPreferencesDialog.configurePsicotsi(event.button);"/>
-	</statusbarpanel>
-    <menupopup onload="Psicotsi.getStatusBar(event);" id="psicotsi-status-bar-menu">
-        <menuitem id="psicotsi_statusbar_config_menu" oncommand="PsicotsiPreferencesDialog.configurePsicotsi();"/>
+    <menupopup id="psicotsi-status-bar-menu">
+        <menuitem id="psicotsi_statusbar_config_menu" oncommand="PsicotsiPreferencesDialog.configurePsicotsi(); PsicotsiMain.registerOnPageLoad(document);"/>
         <menuitem id="psicotsi_statusbar_reload" oncommand="PsicotsiService.load();" />
-        <menuitem id="psicotsi_statusbar_deactivate" oncommand="PsicotsiPreferencesDialog.deactivate();" type="checkbox" autocheck="true"/>
+        <menuitem id="psicotsi_statusbar_deactivate" oncommand="PsicotsiPreferencesDialog.deactivate(); PsicotsiMain.registerOnPageLoad(document);" type="checkbox" autocheck="true"/>
    </menupopup>
+	</statusbarpanel>
 </statusbar>
 </overlay>
 

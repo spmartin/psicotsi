@@ -1,9 +1,5 @@
-
-Psicotsi.modules = [ 
-					 //PsicotsiHeadMenuLinks,
-					 PsicotsiPredictPlayerDetail,
-					 PsicotsiPredictTransferPage,
-					 //PsicotsiPredictPlayerDva
-					];
-
-					
+Psicotsi.modules = [
+//PsicotsiHeadMenuLinks,
+PsicotsiPredictPlayerDetail, PsicotsiPredictTransferPage,
+//PsicotsiPredictPlayerDva
+];

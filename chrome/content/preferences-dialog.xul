@@ -4,6 +4,7 @@
 
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 	id="psicotsi-config"
+	title="PsicoTSI"
 ondialogaccept="PsicotsiPreferencesDialog.onDialogAccept();"
    onload="PsicotsiPreferencesDialog.init();"
     resizable="yes"

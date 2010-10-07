@@ -1,5 +1,8 @@
-content psicotsi jar:chrome/psicotsi.jar!/content/
-content	psicotsi jar:chrome/psicotsi.jar!/content/ contentaccessible=yes
+content     psicotsi    chrome/content/
+content     psicotsi    chrome/content/ contentaccessible=yes
 overlay chrome://browser/content/browser.xul chrome://psicotsi/content/psicotsi.xul
 
-skin	psicotsi	classic/1.0	jar:chrome/psicotsi.jar!/skin/
+skin	psicotsi	classic/1.0	skin/
+
+component 9579bc30-6b81-11de-8a39-0800200c9a66 components/PsicotsiBootComponent.js
+contract @aldeaglobal.net/psicotsi-boot;1 9579bc30-6b81-11de-8a39-0800200c9a66
