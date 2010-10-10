@@ -54,7 +54,7 @@ var PsicotsiPredictTransferPage = {
          } catch (e) {
             dump('error #915411 >>\n' + e);
          }
-         var firstTLPlayer = 0;
+         var firstTLPlayer = -1;
          const PLAYERS_ON_PAGE = 25;
          
          for (i = 0; i < PLAYERS_ON_PAGE; i++) {
@@ -66,6 +66,8 @@ var PsicotsiPredictTransferPage = {
             }
          }
 
+         if (firstTLPlayer < 0) return; //empty transferlist
+        
          for (i = firstTLPlayer; i < PLAYERS_ON_PAGE; i++) {
             var offset = (11 * i) - (firstTLPlayer * 11);
             var tableExist = this.getTLTableExist(i, doc);
