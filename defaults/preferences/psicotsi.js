@@ -1,4 +1,4 @@
-pref( "extensions.psicotsi.prefs.HTURL", "^http:\/\/(stage\.|www\d*\.|www\.new\.|wwwxx\.){0,1}hattrick\.(org|ws|interia\.pl)" );
+pref( "extensions.psicotsi.prefs.HTURL", "^http:\/\/(stage\.|www\d*\.|www\.new\.|wwwxx\.){0,1}hattrick\.(org|ws|interia\.pl|uol\.com\.br)" );
 pref( "extensions.psicotsi.prefs.htLanguage", "en");
 pref( "extensions.psicotsi.prefs.htCurrency", "EUR");
 pref( "extensions.psicotsi.prefs.htCurrencyName", "€");

@@ -51,12 +51,12 @@ var PsicotsiHelper = {
 
 
     isHattrickPlayerPage: function (href) {
-        var regexp = /^http:\/\/(193\.34\.189\.[0-9]+|[^\.]*\.hattrick\.(org|ws)|hattrick\.(org|ws))\/Club\/Players\/Player.aspx/i;
+        var regexp = /^http:\/\/(193\.34\.189\.[0-9]+|[^\.]*\.hattrick\.(org|ws|uol\.com\.br)|hattrick\.(org|ws|uol\.com\.br))\/Club\/Players\/Player.aspx/i;
         return regexp.test(href);
     },
 
     isHattrickSearchPage: function (href) {
-        var regexp = /^http:\/\/(193\.34\.189\.[0-9]+|[^\.]*\.hattrick\.(org|ws)|hattrick\.(org|ws))\/World\/Transfers\/TransfersSearchResult.aspx/i;
+        var regexp = /^http:\/\/(193\.34\.189\.[0-9]+|[^\.]*\.hattrick\.(org|ws|uol\.com\.br)|hattrick\.(org|ws|uol\.com\.br))\/World\/Transfers\/TransfersSearchResult.aspx/i;
         return regexp.test(href);
     },
 
