@@ -213,6 +213,12 @@ var PsicotsiHelper = {
                 node = node.previousSibling.previousSibling;
             }
             var node2 = node;
+    
+            //check if player is playing a match
+            if (node.id == "eventWrapper") {
+               node = node.previousSibling.previousSibling;
+            }
+    
             //check if player has a statement
             if (node.tagName == "EM") {
 
