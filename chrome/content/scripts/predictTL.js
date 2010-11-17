@@ -94,8 +94,8 @@ var PsicotsiPredictTransferPage = {
                      var ageRow = ageR.cells[1];
                      var tsiRow = tsiR.cells[1];
 
-                     var age = parseFloat(ageRow.innerHTML.replace(/[\s]*/gi, ""));
-                     var currTSI = parseFloat(Psicotsi.trim(tsiRow.innerHTML)); //parseFloat(tsiRow.cells[1].textContent.replace(/[\s]*/gi, "")); //getTSI(infoTable);
+                     var age = parseInt(ageRow.innerHTML.replace(/[\s]*/gi, ""));
+                     var currTSI = parseInt(tsiRow.textContent.replace(/[\s]*/gi, "")); 
                   }
                   else {
                      var tableExist = false;
