@@ -23,6 +23,7 @@ var PsicotsiMain = {
 
     init: function () {
         // remove before release
+        /*
         if (!Psicotsi.numglobals) {
             for (var i = 0; i < Psicotsi.globals.length; ++i) dump('global: ' + Psicotsi.globals[i] + '\n');
             Psicotsi.numglobals = Psicotsi.globals.length;
@@ -31,7 +32,8 @@ var PsicotsiMain = {
             for (var i = Psicotsi.numglobals; i < Psicotsi.globals.length; ++i)
             if (Psicotsi.globals[i] != 'QueryInterface') dump('undeclared local global variable: ' + Psicotsi.globals[i] + '\n');
         }
-
+        */
+        
         // init core modules
         for (var i in Psicotsi.core_modules) {
             Psicotsi.core_modules[i].init();
@@ -144,13 +146,13 @@ var PsicotsiMain = {
         if (Psicotsi.getHref(doc).search(PsicotsiPrefs.getString("HTURL")) > -1) {
             var begin = new Date();
             var time = (begin.getSeconds() - this._unloadtime.getSeconds()) * 1000 + begin.getMilliseconds() - this._unloadtime.getMilliseconds();
-            dump("load+ccs time: " + time + " ms | " + doc.location.pathname + doc.location.search + '\n');
+            //dump("load+ccs time: " + time + " ms | " + doc.location.pathname + doc.location.search + '\n');
 
             PsicotsiMain.run(doc);
 
             var end = new Date();
             var time = (end.getSeconds() - begin.getSeconds()) * 1000 + end.getMilliseconds() - begin.getMilliseconds();
-            dump("run time: " + time + " ms | " + doc.location.pathname + doc.location.search + '\n');
+            //dump("run time: " + time + " ms | " + doc.location.pathname + doc.location.search + '\n');
             var content = doc.getElementById("content");
             if (content) {
                 content.addEventListener("DOMSubtreeModified", PsicotsiMain.onPageChange, true);
@@ -233,7 +235,7 @@ var PsicotsiMain = {
                 }
 
 
-                doc.addEventListener('contextmenu', PsicotsiContextMenueCopyId.onContext, false);
+                //doc.addEventListener('contextmenu', PsicotsiContextMenueCopyId.onContext, false);
             }
             else {
 
@@ -425,7 +427,7 @@ Psicotsi.LOG = function (msg) {
 }
 
 Psicotsi.reload_module_css = function (doc) {
-    dump('reload permanents css\n');
+    //dump('reload permanents css\n');
     // check permanant css
     var isStandard = Psicotsi.isStandardLayout(doc);
 
