@@ -26,58 +26,40 @@ var PsicotsiPredictPlayerDetail = {
          dump('er55>\n' + e);
       }
 
-      var SkilLink = [];
-      var numberLinks = 0;
-      var alldivs = doc.getElementsByTagName('a');
-
-      for (var j = 0; j < alldivs.length; j++) {
-         if (alldivs[j].className == "skill") {
-            SkilLink[numberLinks] = alldivs[j];
-            numberLinks++;
-         }
-      }
-
-      if (numberLinks == 15) {
-         //Old Table (link skills)
-         var sta = PsicotsiHelper.getSkillLevelFromLink(SkilLink[1]);
-         var frm = PsicotsiHelper.getSkillLevelFromLink(SkilLink[0]);
-         var goa = PsicotsiHelper.getSkillLevelFromLink(SkilLink[8]);
-         var def = PsicotsiHelper.getSkillLevelFromLink(SkilLink[12]);
-         var pla = PsicotsiHelper.getSkillLevelFromLink(SkilLink[9]);
-         var win = PsicotsiHelper.getSkillLevelFromLink(SkilLink[11]);
-         var pas = PsicotsiHelper.getSkillLevelFromLink(SkilLink[10]);
-         var sco = PsicotsiHelper.getSkillLevelFromLink(SkilLink[13]);
-         var sp = PsicotsiHelper.getSkillLevelFromLink(SkilLink[14]);
-         entryPoint = SkilLink[8].parentNode.parentNode.parentNode.parentNode.parentNode;
-         var tableExist = true;
-      }
-      else if (numberLinks == 14) {
-         //New Table (graph skills)
-         var sta = PsicotsiHelper.getSkillLevelFromLink(SkilLink[1]);
-         var frm = PsicotsiHelper.getSkillLevelFromLink(SkilLink[0]);
-         var goa = PsicotsiHelper.getSkillLevelFromLink(SkilLink[7]);
-         var def = PsicotsiHelper.getSkillLevelFromLink(SkilLink[8]);
-         var pla = PsicotsiHelper.getSkillLevelFromLink(SkilLink[9]);
-         var win = PsicotsiHelper.getSkillLevelFromLink(SkilLink[10]);
-         var pas = PsicotsiHelper.getSkillLevelFromLink(SkilLink[11]);
-         var sco = PsicotsiHelper.getSkillLevelFromLink(SkilLink[12]);
-         var sp = PsicotsiHelper.getSkillLevelFromLink(SkilLink[13]);
-         entryPoint = SkilLink[7].parentNode.parentNode.parentNode.parentNode.parentNode;
-      }
-      else if (numberLinks == 16) {
-         //New Table (graph skills)
-         var sta = PsicotsiHelper.getSkillLevelFromLink(SkilLink[1]);
-         var frm = PsicotsiHelper.getSkillLevelFromLink(SkilLink[0]);
-         var goa = PsicotsiHelper.getSkillLevelFromLink(SkilLink[9]);
-         var def = PsicotsiHelper.getSkillLevelFromLink(SkilLink[13]);
-         var pla = PsicotsiHelper.getSkillLevelFromLink(SkilLink[10]);
-         var win = PsicotsiHelper.getSkillLevelFromLink(SkilLink[12]);
-         var pas = PsicotsiHelper.getSkillLevelFromLink(SkilLink[11]);
-         var sco = PsicotsiHelper.getSkillLevelFromLink(SkilLink[14]);
-         var sp = PsicotsiHelper.getSkillLevelFromLink(SkilLink[15]);
-         entryPoint = SkilLink[9].parentNode.parentNode.parentNode.parentNode.parentNode;
-      }
-      else {
+      var links = doc.evaluate("//a[@class='skill']", doc, null, Components.interfaces.nsIDOMXPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
+      
+      if (links.snapshotLength == 14) {
+         //New Table
+         var goa = PsicotsiHelper.getValueFromLink(links.snapshotItem(7).href)
+         var def = PsicotsiHelper.getValueFromLink(links.snapshotItem(8).href)
+         var pla = PsicotsiHelper.getValueFromLink(links.snapshotItem(9).href)
+         var win = PsicotsiHelper.getValueFromLink(links.snapshotItem(10).href)
+         var pas = PsicotsiHelper.getValueFromLink(links.snapshotItem(11).href)
+         var sco = PsicotsiHelper.getValueFromLink(links.snapshotItem(12).href)
+         var sp = PsicotsiHelper.getValueFromLink(links.snapshotItem(13).href)
+         entryPoint = links.snapshotItem(7).parentNode.parentNode.parentNode.parentNode.parentNode;
+      } else if (links.snapshotLength == 15) {
+         //Old Table
+         var goa = PsicotsiHelper.getValueFromLink(links.snapshotItem(8).href)
+         var def = PsicotsiHelper.getValueFromLink(links.snapshotItem(12).href)
+         var pla = PsicotsiHelper.getValueFromLink(links.snapshotItem(9).href)
+         var win = PsicotsiHelper.getValueFromLink(links.snapshotItem(11).href)
+         var pas = PsicotsiHelper.getValueFromLink(links.snapshotItem(10).href)
+         var sco = PsicotsiHelper.getValueFromLink(links.snapshotItem(13).href)
+         var sp = PsicotsiHelper.getValueFromLink(links.snapshotItem(14).href)
+         entryPoint = links.snapshotItem(8).parentNode.parentNode.parentNode.parentNode.parentNode;
+      } else if (links.snapshotLength == 16) {
+         //Old Table
+         var goa = PsicotsiHelper.getValueFromLink(links.snapshotItem(9).href)
+         var def = PsicotsiHelper.getValueFromLink(links.snapshotItem(13).href)
+         var pla = PsicotsiHelper.getValueFromLink(links.snapshotItem(10).href)
+         var win = PsicotsiHelper.getValueFromLink(links.snapshotItem(12).href)
+         var pas = PsicotsiHelper.getValueFromLink(links.snapshotItem(11).href)
+         var sco = PsicotsiHelper.getValueFromLink(links.snapshotItem(14).href)
+         var sp = PsicotsiHelper.getValueFromLink(links.snapshotItem(15).href)
+         entryPoint = links.snapshotItem(9).parentNode.parentNode.parentNode.parentNode.parentNode;
+      } else {
+         //Page changed, PsicoTSI will not work or skills not available
          var sta = 6;
          var frm = 6;
          var goa = 5;
@@ -91,6 +73,9 @@ var PsicotsiPredictPlayerDetail = {
       }
 
       try {
+         var frm = PsicotsiHelper.getValueFromLink(links.snapshotItem(0).href)
+         var sta = PsicotsiHelper.getValueFromLink(links.snapshotItem(1).href)
+         
          var age = PsicotsiHelper.getAge(doc);
          var infoTable = PsicotsiHelper.getInfoTable(doc);
          var currTSI = PsicotsiHelper.getTSI(infoTable);
@@ -140,6 +125,8 @@ var PsicotsiPredictPlayerDetail = {
             valMaxSkillHigh = PsicotsiHelper.calcMaxSkillGK(currTSI, frm, "High");
          };
 
+          //debug SKILLS
+          //dump("Age: " + age + "\nTSI: " + currTSI + "\nWage: " + currWAGE + "\nInjured: " + injured + "\nForm: " + frm + "\nStamina: " + sta + "\nKeeper: " + goa + "\nPlaymaking: " + pla + "\nPassing: " + pas + "\nWinger: " + win + "\nDefending: " + def + "\nScoring: " + sco + "\nSet Pieces: " + sp);
 
          this.drawMessage(doc, entryPoint, isGK, undef, injured, age > 27, maxSkill, valMaxSkillHigh, valMaxSkillAvg, valMaxSkillLow, valMaxSkillWage, limit)
 
@@ -178,7 +165,7 @@ var PsicotsiPredictPlayerDetail = {
 
       var table = doc.createElement("table");
 
-      if (!PsicotsiHelper.getTableExist(doc)) {
+      if (!PsicotsiHelper.tableExists(doc)) {
 
          // Player has more than one mainskill
          var tr = doc.createElement("tr");
@@ -505,7 +492,7 @@ var PsicotsiPredictPlayerDetail = {
          var divB = doc.createElement("div");
          divB.setAttribute("class", "boxBody");
 
-         if (!PsicotsiHelper.getTableExist(doc)) {
+         if (!PsicotsiHelper.tableExists(doc)) {
             var img = doc.createElement("img");
             img.setAttribute("src", "chrome://psicotsi/content/resources/img/unknown.png");
             img.setAttribute("alt", "?");

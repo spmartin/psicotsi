@@ -73,14 +73,14 @@ var PsicotsiHelper = {
     },
 
     getValueFromLink: function (link) {
-        var skill = -1;
-        try {
-            skill = link.replace(/.+ll=/i, "").match(/^\d+/);
-            if (skill < 0 || skill > 20) throw "Skill (" + skill + ") out of bounds";
-        } catch (e) {
+      var skill = -1;
+      try {
+         skill = link.replace(/.+ll=/i, "").match(/^\d+/);
+         if (skill < 0 || skill > 20) throw "Skill (" + skill + ") out of bounds";
+      } catch (e) {
             throw ("In function getValueFromLink()\n - " + e);
-        }
-        return skill * 1;
+      }
+      return parseInt(skill);
     },
 
     getInfoTable: function (doc) {
@@ -98,49 +98,25 @@ var PsicotsiHelper = {
         return infoTable;
     },
 
-    getTableExist: function (doc) {
-        var table = false;
+    tableExists: function (doc) {
         try {
-
-            var SkilLink = [];
-            var numberLinks = 0;
-            var alldivs = doc.getElementsByTagName('a');
-
-            for (var j = 0; j < alldivs.length; j++) {
-
-
-                if (alldivs[j].className == "skill") {
-
-                    SkilLink[numberLinks] = alldivs[j];
-                    numberLinks++;
-
-
-                }
-            }
-            if (numberLinks > 13) {
-                table = true;
-            }
-            else {
-                table = false;
-            }
-
+          var links = doc.evaluate("//a[@class='skill']", doc, null, Components.interfaces.nsIDOMXPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
+          return (links.snapshotLength > 13)
         } catch (e) {
-            table = false;
             throw ("In function getTableExist()\n - " + e);
         }
-        return table;
-
+        return false;
     },
 
     getTSI: function (infoTable) {
         var tsi = -1;
         try {
-            tsi = parseFloat(infoTable.rows[1].cells[1].textContent.replace(/[\s]*/gi, ""));
+            tsi = parseInt(infoTable.rows[1].cells[1].textContent.replace(/[\s]*/gi, ""));
             if (tsi < 0) throw "Negative TSI (" + tsi + ").";
         } catch (e) {
             throw ("In function getTSI()\n - " + e);
         }
-        return tsi * 1;
+        return parseInt(tsi);
     },
 
 
@@ -186,7 +162,7 @@ var PsicotsiHelper = {
             throw ("In function getWage()\n - " + e);
         }
 
-        return wage * 1;
+        return parseInt(wage);
     },
 
     getInjuries: function (infoTable) {
@@ -235,7 +211,7 @@ var PsicotsiHelper = {
         } catch (e) {
             dump("In function getAge()\n - " + e);
         }
-        return age * 1;
+        return parseInt(age);
     },
 
 

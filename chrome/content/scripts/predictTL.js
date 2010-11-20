@@ -33,34 +33,15 @@ var PsicotsiPredictTransferPage = {
 
       if (SETT_SHOW_SEARCH_PAGE) {
 
-         var SkilLink = [];
-         var numberLinks = 0;
+         var links = doc.evaluate("//a[@class='skill']", doc, null, Components.interfaces.nsIDOMXPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
 
-         try {
-
-            var alldivs = doc.getElementsByTagName('a');
-
-            for (var j = 0; j < alldivs.length; j++) {
-
-
-               if (alldivs[j].className == "skill") {
-
-                  SkilLink[numberLinks] = alldivs[j];
-                  numberLinks++;
-
-
-               }
-            }
-         } catch (e) {
-            dump('error #915411 >>\n' + e);
-         }
          var firstTLPlayer = -1;
          const PLAYERS_ON_PAGE = 25;
          
          for (i = 0; i < PLAYERS_ON_PAGE; i++) {
             var ageR = doc.getElementById('ctl00_CPMain_dl_ctrl' + i + '_TransferPlayer_r3');
 
-            if (this.getTLTableExist(i, doc) == true) {
+            if (this.TLTableExists(i, doc) == true) {
                firstTLPlayer = i;
                break;
             }
@@ -70,19 +51,19 @@ var PsicotsiPredictTransferPage = {
         
          for (i = firstTLPlayer; i < PLAYERS_ON_PAGE; i++) {
             var offset = (11 * i) - (firstTLPlayer * 11);
-            var tableExist = this.getTLTableExist(i, doc);
+            var tableExist = this.TLTableExists(i, doc);
             try {
 
-               var sta = parseFloat(PsicotsiHelper.getSkillLevelFromLink(SkilLink[3 + offset]));
+            var sta = parseInt(PsicotsiHelper.getValueFromLink(links.snapshotItem(3 + offset).href));
 
-               var frm = parseFloat(PsicotsiHelper.getSkillLevelFromLink(SkilLink[2 + offset]));
-               var goa = parseFloat(PsicotsiHelper.getSkillLevelFromLink(SkilLink[4 + offset]));
-               var def = parseFloat(PsicotsiHelper.getSkillLevelFromLink(SkilLink[8 + offset]));
-               var pla = parseFloat(PsicotsiHelper.getSkillLevelFromLink(SkilLink[5 + offset]));
-               var win = parseFloat(PsicotsiHelper.getSkillLevelFromLink(SkilLink[7 + offset]));
-               var pas = parseFloat(PsicotsiHelper.getSkillLevelFromLink(SkilLink[6 + offset]));
-               var sco = parseFloat(PsicotsiHelper.getSkillLevelFromLink(SkilLink[9 + offset]));
-               var sp = parseFloat(PsicotsiHelper.getSkillLevelFromLink(SkilLink[10 + offset]));
+            var frm = parseInt(PsicotsiHelper.getValueFromLink(links.snapshotItem(2 + offset).href));
+            var goa = parseInt(PsicotsiHelper.getValueFromLink(links.snapshotItem(4 + offset).href));
+            var def = parseInt(PsicotsiHelper.getValueFromLink(links.snapshotItem(8 + offset).href));
+            var pla = parseInt(PsicotsiHelper.getValueFromLink(links.snapshotItem(5 + offset).href));
+            var win = parseInt(PsicotsiHelper.getValueFromLink(links.snapshotItem(7 + offset).href));
+            var pas = parseInt(PsicotsiHelper.getValueFromLink(links.snapshotItem(6 + offset).href));
+            var sco = parseInt(PsicotsiHelper.getValueFromLink(links.snapshotItem(9 + offset).href));
+            var sp = parseInt(PsicotsiHelper.getValueFromLink(links.snapshotItem(10 + offset).href));
 
                var ageR = null;
                var tsiR = null;
@@ -190,7 +171,7 @@ var PsicotsiPredictTransferPage = {
 
 
    },
-   getTLTableExist: function (inte, doc) {
+   TLTableExists: function (inte, doc) {
       var gte = doc.getElementById('ctl00_CPMain_dl_ctrl' + inte + '_TransferPlayer_r1');
 
       if (gte) {
