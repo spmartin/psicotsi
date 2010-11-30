@@ -86,10 +86,10 @@ var PsicotsiHelper = {
     getInfoTable: function (doc) {
         var infoTable = null;
         try {
-            infoTable = doc.getElementById("ctl00_CPMain_pnlplayerInfo").childNodes[3];
+            infoTable = doc.getElementById("ctl00_ctl00_CPContent_CPMain_pnlplayerInfo").childNodes[3];
             if (!infoTable.rows) {
                 //NT PLAYER
-                infoTable = doc.getElementById("ctl00_CPMain_pnlplayerInfo").childNodes[4];
+                infoTable = doc.getElementById("ctl00_ctl00_CPContent_CPMain_pnlplayerInfo").childNodes[4];
             }
             if (!infoTable.rows) throw ("Unable to find Player's Info Table");
         } catch (e) {
@@ -179,10 +179,10 @@ var PsicotsiHelper = {
     getAge: function (doc) {
         var age = -1;
         try {
-            var node = doc.getElementById("ctl00_CPMain_ucPlayerFace_pnlAvatar");
+            var node = doc.getElementById("ctl00_ctl00_CPContent_CPMain_ucPlayerFace_pnlAvatar");
             if (!node) {
                 //not a supporter or face not showed
-                node = doc.getElementById("ctl00_CPMain_pnlplayerInfo");
+                node = doc.getElementById("ctl00_ctl00_CPContent_CPMain_pnlplayerInfo");
                 node = node.previousSibling.previousSibling;
             }
             else {

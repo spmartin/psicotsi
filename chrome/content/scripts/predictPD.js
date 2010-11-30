@@ -69,7 +69,7 @@ var PsicotsiPredictPlayerDetail = {
          var pas = 1;
          var sco = 1;
          var sp = 1;
-         entryPoint = doc.getElementById('ctl00_CPMain_updBestLatest');
+         entryPoint = doc.getElementById('ctl00_ctl00_CPContent_CPMain_updBid');
       }
 
       try {

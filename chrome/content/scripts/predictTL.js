@@ -39,7 +39,7 @@ var PsicotsiPredictTransferPage = {
          const PLAYERS_ON_PAGE = 25;
          
          for (i = 0; i < PLAYERS_ON_PAGE; i++) {
-            var ageR = doc.getElementById('ctl00_CPMain_dl_ctrl' + i + '_TransferPlayer_r3');
+            var ageR = doc.getElementById('ctl00_ctl00_CPContent_CPMain_dl_ctrl' + i + '_TransferPlayer_r3');
 
             if (this.TLTableExists(i, doc) == true) {
                firstTLPlayer = i;
@@ -68,8 +68,8 @@ var PsicotsiPredictTransferPage = {
                var ageR = null;
                var tsiR = null;
                try {
-                  var ageR = doc.getElementById('ctl00_CPMain_dl_ctrl' + i + '_TransferPlayer_r3');
-                  var tsiR = doc.getElementById('ctl00_CPMain_dl_ctrl' + i + '_TransferPlayer_r4');
+                  var ageR = doc.getElementById('ctl00_ctl00_CPContent_CPMain_dl_ctrl' + i + '_TransferPlayer_r3');
+                  var tsiR = doc.getElementById('ctl00_ctl00_CPContent_CPMain_dl_ctrl' + i + '_TransferPlayer_r4');
 
                   if (ageR != null) {
                      var ageRow = ageR.cells[1];
@@ -96,7 +96,7 @@ var PsicotsiPredictTransferPage = {
                   var injured = false;
 
                   //this is a really bad code... thinking about a better way
-                  var node = doc.getElementById('ctl00_CPMain_dl_ctrl' + i + '_TransferPlayer_r1');
+                  var node = doc.getElementById('ctl00_ctl00_CPContent_CPMain_dl_ctrl' + i + '_TransferPlayer_r1');
                   var testSearch = doc.evaluate("//img[contains(@class,'injuryInjured')]", doc, null, Components.interfaces.nsIDOMXPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
                   for (kk = 0; kk < testSearch.snapshotLength; kk++) {
                      testNode = testSearch.snapshotItem(kk).parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
@@ -172,7 +172,7 @@ var PsicotsiPredictTransferPage = {
 
    },
    TLTableExists: function (inte, doc) {
-      var gte = doc.getElementById('ctl00_CPMain_dl_ctrl' + inte + '_TransferPlayer_r1');
+      var gte = doc.getElementById('ctl00_ctl00_CPContent_CPMain_dl_ctrl' + inte + '_TransferPlayer_r1');
 
       if (gte) {
          return true;
