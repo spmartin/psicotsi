@@ -86,11 +86,8 @@ var PsicotsiHelper = {
     getInfoTable: function (doc) {
         var infoTable = null;
         try {
-            infoTable = doc.getElementById("ctl00_ctl00_CPContent_CPMain_pnlplayerInfo").childNodes[3];
-            if (!infoTable.rows) {
-                //NT PLAYER
-                infoTable = doc.getElementById("ctl00_ctl00_CPContent_CPMain_pnlplayerInfo").childNodes[4];
-            }
+           var infoDiv = doc.getElementById("ctl00_ctl00_CPContent_CPMain_pnlplayerInfo");
+           infoTable = infoDiv.childNodes[infoDiv.childNodes.length - 2];
             if (!infoTable.rows) throw ("Unable to find Player's Info Table");
         } catch (e) {
             throw ("In function getInfoTable()\n - " + e);
