@@ -56,4 +56,6 @@
     <language name="es-CA" desc="Español, Centroamericano"></language>
     
     <language name="pl" desc="Polski"></language>
+
+    <language name="eu" desc="Basque"></language>
 </hattricklanguages>
