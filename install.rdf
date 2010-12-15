@@ -4,7 +4,7 @@
      xmlns:em="http://www.mozilla.org/2004/em-rdf#">
   <Description about="urn:mozilla:install-manifest">
     <em:id>{7E77F5DF-8022-40e3-9122-F03DEBEFC43B}</em:id>
-    <em:version>1.0.25.2</em:version>
+    <em:version>1.0.25.3</em:version>
     <em:type>2</em:type>
 
     <!-- Target Application this extension can install into, 
@@ -40,6 +40,7 @@
     <em:translator>Latviešu - VadimS (231207)</em:translator>
     <em:translator>Magyar - drideg (579834)</em:translator>
     <em:translator>Nederlands - eekels (768188)</em:translator>
+    <em:translator>فارسی - Slash-ss (9630939)</em:translator>    
     <em:translator>Polski - lemurek (1813780)</em:translator>
     <em:translator>Português - Mr_Nuno_Alves (1422600)</em:translator>
     <em:translator>Português (Brasil) - MarceloFBrandao (715122), Ruivao (1639784)</em:translator>
