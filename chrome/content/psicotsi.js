@@ -292,12 +292,10 @@ Psicotsi.isPage = function (page, doc) {
 }
 
 Psicotsi.getHref = function (doc) {
-    try {
+    if (doc && doc.location && doc.location.href)
       return doc.location.href;
-    } catch (e) {
-      Psicotsi.dump(e);
+    else
       return "";
-    }
 }
 
 
@@ -346,11 +344,6 @@ Psicotsi.addStyleSheet = function (doc, css) {
 Psicotsi.confirmDialog = function (msg) {
     var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
     return promptService.confirm(null, null, msg);
-}
-
-Psicotsi.alert = function (msg) {
-    var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
-    return promptService.alert(null, null, msg);
 }
 
 Psicotsi.trim = function (text) {

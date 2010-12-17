@@ -9,7 +9,7 @@ var Psicotsil10n = {
         try {
             this._strings_bundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService).createBundle("chrome://psicotsi/content/locale/" + localecode + "/psicotsi.properties");
         } catch (e) {
-            dump('Psicotsi l10n->get_strings_bundle: Error reading language file: ' + e + '\n');
+          Psicotsi.dump(e);
         }
     },
     getString: function (str) {
@@ -19,13 +19,13 @@ var Psicotsil10n = {
             } catch (e) {
                 try {
                     if (this._strings_bundle_default) return this._strings_bundle_default.GetStringFromName(str);
-                } catch (ee) {
-                    dump("** l10n error 1 ** '" + str + "'\n");
+                } catch (e) {
+                    Psicotsi.dump(e);
                     return "** l10n error 1 **";
                 }
             }
         } else {
-            dump("** l10n error 2 ** '" + str + "'\n");
+            Psicotsi.dump(e);
             return "** n10n error 2 **";
         }
     },
@@ -36,7 +36,7 @@ var Psicotsil10n = {
             } catch (e) {
                 try {
                     return this._strings_bundle_default.formatStringFromName(str, key_array);
-                } catch (ee) {
+                } catch (e) {
                     return "** l10n error **";
                 }
             }

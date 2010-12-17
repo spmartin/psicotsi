@@ -42,7 +42,9 @@ var PsicotsiPreferencesDialog = {
             try {
                 var temp = boolPrefs[i];
                 document.getElementById(temp).checked = PsicotsiPrefs.getBool(temp);
-            } catch (e) {}
+            } catch (e) {
+                Psicotsi.dump(e);
+            }
         }
 
 
@@ -90,7 +92,7 @@ var PsicotsiPreferencesDialog = {
             groupbox4.appendChild(caption4);
             groupbox4.appendChild(hbox4);
         } catch (e) {
-            Psicotsi.alert(' error prefDlg.js > \n' + e);
+            Psicotsi.dump(e);
         }
 
 /*try {
@@ -98,7 +100,7 @@ var PsicotsiPreferencesDialog = {
 		for (var i=0; i<boolPrefs.length; i++) {
 			doc.getElementById(boolPrefs[i]).label = Psicotsil10n.getString("psicotsi.prefs." + boolPrefs[i]);
 		}
-	}catch (e){Psicotsi.alert(' error prefDlg.js #2 > \n' + e);}*/
+	}catch (e){    Psicotsi.dump(e); }*/
 
         // language
         var groupbox2 = doc.createElement("groupbox");
@@ -241,7 +243,7 @@ var PsicotsiPreferencesDialog = {
             modules_list.setAttribute("style", "background-color:ButtonFace !important; color: ButtonText !important;");
             var vbox = doc.createElement("vbox");
         } catch (e) {
-            Psicotsi.alert(' error #51147 >\n' + e);
+            Psicotsi.dump(e);
         }
         try {
             //developers
@@ -282,7 +284,7 @@ var PsicotsiPreferencesDialog = {
 
             modules_list.appendChild(vbox);
         } catch (e) {
-            Psicotsi.alert('error initAboutPref() >\n' + e);
+            Psicotsi.dump(e);
         }
     },
 
@@ -339,7 +341,7 @@ var PsicotsiPreferencesDialog = {
 
             } catch (e) {
                 var rate = '1.0';
-                Psicotsi.alert(' error getCurrencyRate >>\n' + e);
+                Psicotsi.dump(e);
             }
 
 
@@ -373,7 +375,7 @@ var PsicotsiPreferencesDialog = {
 
         }
         catch (e) {
-            Psicotsi.alert(e);
+            Psicotsi.dump(e);
         }
     },
 
@@ -391,14 +393,14 @@ var PsicotsiPreferencesDialog = {
                         returnedOffset = (values[i].attributes.getNamedItem("offset").textContent);
                         // alert( returnedOffset );
                     }
-                } catch (ee) {
-                    // alert(ee);
+                } catch (e) {
+                  Psicotsi.dump(e);
                 }
             }
             return returnedOffset;
         }
         catch (e) {
-            dump('  Offset search for \n' + itemToSearch + ' ' + e + '\n');
+            Psicotsi.dump(e);
             return 0;
         }
     },
@@ -568,7 +570,7 @@ PsicotsiPreferencesDialog.pref_show = function (vbox) {
             }
         }
         catch (e) {
-            dump(e);
+            Psicotsi.dump(e);
         }
     }
 }
@@ -614,7 +616,7 @@ PsicotsiPreferencesDialog.SavePrefs = function (ev) {
         if (!ev) close();
     }
     catch (e) {
-        Psicotsi.alert(e);
+        Psicotsi.dump(e);
     }
     return true;
 }
@@ -653,7 +655,7 @@ PsicotsiPreferencesDialog.LoadPrefs = function (ev) {
 
     }
     catch (e) {
-        Psicotsi.alert(e);
+        Psicotsi.dump(e);
     }
     return true;
 }
