@@ -12,7 +12,7 @@ var PsicotsiPredictPlayerDetail = {
          var currency = PsicotsiPrefs.getString("htCurrencyName");
       } catch (e) {
          var currency = 'null';
-        Psicotsi.dump('[Module: predictPD] [Function: getCurrency] ' + e);
+         Psicotsi.dump(e);
       }
       return currency;
    },
@@ -23,7 +23,7 @@ var PsicotsiPredictPlayerDetail = {
          var href = doc.location.href;
       }
       catch (e) {
-        Psicotsi.dump('[Module: predictPD] [Function: run] ' + e);
+        Psicotsi.dump(e);
       }
 
       var links = doc.evaluate("//a[@class='skill']", doc, null, Components.interfaces.nsIDOMXPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
@@ -132,7 +132,7 @@ var PsicotsiPredictPlayerDetail = {
 
 
       } catch (e) {
-        Psicotsi.dump('[Module: predictPD] [Function: run] ' + e);
+        Psicotsi.dump(e);
       }
 
    },
@@ -298,7 +298,7 @@ var PsicotsiPredictPlayerDetail = {
                }
             }
          } catch (e) {
-            Psicotsi.dump('[Module: predictPD] [Function: drawMessage] ' + e);
+            Psicotsi.dump(e);
          }
 
          tr.appendChild(td1);
@@ -345,7 +345,7 @@ var PsicotsiPredictPlayerDetail = {
          var SETT_HIDE_UNDER_SKILLS = PsicotsiPrefs.getBool("hideUnderSkills");
       }
       catch (e) {
-        Psicotsi.dump('[Module: predictPD] [Function: drawMessage] ' + e);
+        Psicotsi.dump(e);
       }
 
       if (!SETT_HIDE_UNDER_SKILLS) {
@@ -356,7 +356,7 @@ var PsicotsiPredictPlayerDetail = {
          try {
             isAlertBoxStyle = PsicotsiPrefs.getBool("showAlertBox");
          } catch (e) {
-            Psicotsi.dump('[Module: predictPD] [Function: drawMessage] ' + e);
+            Psicotsi.dump(e);
          }
 
          if (isAlertBoxStyle) {
@@ -392,7 +392,7 @@ var PsicotsiPredictPlayerDetail = {
          var SETT_PREF_LEFT = PsicotsiPrefs.getBool("showLeftMenu");
       }
       catch (e) {
-        Psicotsi.dump('[Module: predictPD] [Function: drawMessage] ' + e);
+        Psicotsi.dump(e);
       }
 
       if (SETT_PREF_LEFT) {

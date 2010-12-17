@@ -62,8 +62,7 @@ var PsicotsiMain = {
                         module.init();
                         //dump( "Psicotsi enabled module: " + module.MODULE_NAME + "\n");
                     } catch (e) {
-                        Psicotsi.dump("[psicotsi.js] Psicotsi module " + module.MODULE_NAME + " init() exception: " + "\n  " + e + "\n");
-                        Components.utils.reportError(e);
+                        Psicotsi.dump(e);
                     }
                 }
                 else {
@@ -199,8 +198,7 @@ var PsicotsiMain = {
                         fn.run(doc);
                         //Psicotsi.run_on_cur_page.push({'page':'','module':fn});								
                     } catch (e) {
-                        Psicotsi.dump("[psicotsi.js] Psicotsi module " + fn.MODULE_NAME + " run() exception: \n  " + e + "\n");
-                        Components.utils.reportError(e);
+                        Psicotsi.dump(e);
                     }
                 });
 
@@ -215,8 +213,7 @@ var PsicotsiMain = {
                                 //Psicotsi.dump ( "[psicotsi.js] Psicotsi module " + fn.MODULE_NAME + " run() at page " + i + "\n  " );								
                                 fn.run(i, doc);
                             } catch (e) {
-                                Psicotsi.dump("[psicotsi.js] Psicotsi module " + fn.MODULE_NAME + " run() exception at page " + i + "\n  " + e + "\n");
-                                Components.utils.reportError(e);
+                                Psicotsi.dump(e);
                             }
                         });
                         Psicotsi.may_run_on_page[i].forEach(
@@ -249,7 +246,7 @@ var PsicotsiMain = {
                 }
             }
         } catch (e) {
-            Psicotsi.dump('[psicotsi.js] Psicotsi.run: ' + e + '\n');
+            Psicotsi.dump(e);
         }
     },
 
@@ -265,8 +262,7 @@ var PsicotsiMain = {
                 try {
                     fn.change(doc);
                 } catch (e) {
-                    Psicotsi.dump("[psicotsi.js] Psicotsi module " + fn.MODULE_NAME + " change() exception: \n  " + e + "\n");
-                    Components.utils.reportError(e);
+                    Psicotsi.dump(e);
                 }
             });
 
@@ -279,8 +275,7 @@ var PsicotsiMain = {
                         try {
                             fn.change(i, doc);
                         } catch (e) {
-                            Psicotsi.dump("[psicotsi.js] Psicotsi module " + fn.MODULE_NAME + " change() exception at page " + i + "\n  " + e + "\n");
-                            Components.utils.reportError(e);
+                            Psicotsi.dump(e);
                         }
                     });
                 }
@@ -300,6 +295,7 @@ Psicotsi.getHref = function (doc) {
     try {
       return doc.location.href;
     } catch (e) {
+      Psicotsi.dump(e);
       return "";
     }
 }
@@ -317,7 +313,7 @@ Psicotsi.registerModulePages = function (module) {
             }
         }
     } catch (e) {
-        Psicotsi.dump('[psicotsi.js] registerModulePages: ' + e + '\n');
+        Psicotsi.dump(e);
     }
 }
 
@@ -402,6 +398,7 @@ Psicotsi.isModuleEnabled = function (module) {
         var val = PsicotsiPrefs.getBool("module." + module.MODULE_NAME + ".enabled");
         return (val != null) ? val : module.DEFAULT_ENABLED;
     } catch (e) {
+        Psicotsi.dump(e);
         return false;
     }
 }
@@ -411,6 +408,7 @@ Psicotsi.isModuleFeatureEnabled = function (module, feature) {
         var val = PsicotsiPrefs.getBool("module." + module.MODULE_NAME + "." + feature + ".enabled");
         return (val != null) ? val : module.DEFAULT_ENABLED;
     } catch (e) {
+        Psicotsi.dump(e);
         return false;
     }
 }
@@ -420,6 +418,7 @@ Psicotsi.getModuleValue = function (module) {
         var val = PsicotsiPrefs.getInt("module." + module.MODULE_NAME + ".value");
         return (val != null) ? val : 0;
     } catch (e) {
+        Psicotsi.dump(e);
         return false;
     }
 }
@@ -820,7 +819,7 @@ Psicotsi.linebreak = function (txt, where) {
         }
         return d.join(" ");
     } catch (e) {
-        Psicotsi.dump('[psicotsi.js] LINEBREAK: ' + e + '\n');
+        Psicotsi.dump(e);
     }
 }
 
@@ -845,10 +844,10 @@ Psicotsi.cut_word = function (txt, where) {
         }
         return d.join("");
     } catch (e) {
-        Psicotsi.dump('[psicotsi.js] CUT WORD: ' + e + '\n');
+        Psicotsi.dump(e);
     }
 }
 
-Psicotsi.dump = function (aMessage) {
-  Psicotsi.consoleService.logStringMessage("PsicoTSI: " + aMessage);
+Psicotsi.dump = function (e) {  
+  Psicotsi.consoleService.logStringMessage("PsicoTSI Exception\n\n" + e + "\n\n" + ((e.stack != null)?e.stack:""));
 }

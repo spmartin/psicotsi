@@ -28,7 +28,7 @@ var PsicotsiPredictTransferPage = {
          var SETT_SHOW_SEARCH_PAGE = PsicotsiPrefs.getBool("showSearchPage");
       }
       catch (e) {
-        Psicotsi.dump('[Module: predictTL] [Function: run] ' + e);
+        Psicotsi.dump(e);
       }
 
       if (SETT_SHOW_SEARCH_PAGE) {
@@ -82,7 +82,7 @@ var PsicotsiPredictTransferPage = {
                      var tableExist = false;
                   }
                } catch (e) {
-                  Psicotsi.dump('[Module: predictTL] [Function: run] ' + e);
+                  Psicotsi.dump(e);
                }
 
                if (ageR == null) {
@@ -103,7 +103,7 @@ var PsicotsiPredictTransferPage = {
                      if (testNode == node.previousSibling.previousSibling) injured = true;
                   }
                } catch (e) {
-                  Psicotsi.dump('[Module: predictTL] [Function: run] ' + e);
+                  Psicotsi.dump(e);
                }
                if (node == null) {
                   injured = false;
@@ -151,7 +151,7 @@ var PsicotsiPredictTransferPage = {
                      valMaxSkillHigh = PsicotsiHelper.calcMaxSkillGK(currTSI, frm, "High");
                   }
                   catch (e) {
-                    Psicotsi.dump('[Module: predictTL] [Function: run] ' + e);
+                    Psicotsi.dump(e);
                   }
                   valMaxSkillWage = 0;
 
@@ -161,7 +161,7 @@ var PsicotsiPredictTransferPage = {
                var tableExist = true;
             }
             catch (e) {
-               Psicotsi.dump('[Module: predictTL] [Function: run] ' + e);
+               Psicotsi.dump(e);
                var tableExist = false;
             }
 
@@ -216,7 +216,7 @@ var PsicotsiPredictTransferPage = {
       try {
          isAlertBoxStyle = PsicotsiPrefs.getBool("showAlertBox");
       } catch (e) {
-        Psicotsi.dump('[Module: predictTL] [Function: drawMessageInSearchPage] ' + e);      
+        Psicotsi.dump(e);
       }
 
       if (isAlertBoxStyle) {
