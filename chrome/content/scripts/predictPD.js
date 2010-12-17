@@ -12,7 +12,7 @@ var PsicotsiPredictPlayerDetail = {
          var currency = PsicotsiPrefs.getString("htCurrencyName");
       } catch (e) {
          var currency = 'null';
-         dump('  error getCurrency> \n' + e);
+        Psicotsi.dump('[Module: predictPD] [Function: getCurrency] ' + e);
       }
       return currency;
    },
@@ -23,7 +23,7 @@ var PsicotsiPredictPlayerDetail = {
          var href = doc.location.href;
       }
       catch (e) {
-         dump('er55>\n' + e);
+        Psicotsi.dump('[Module: predictPD] [Function: run] ' + e);
       }
 
       var links = doc.evaluate("//a[@class='skill']", doc, null, Components.interfaces.nsIDOMXPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
@@ -126,13 +126,13 @@ var PsicotsiPredictPlayerDetail = {
          };
 
           //debug SKILLS
-          //dump("Age: " + age + "\nTSI: " + currTSI + "\nWage: " + currWAGE + "\nInjured: " + injured + "\nForm: " + frm + "\nStamina: " + sta + "\nKeeper: " + goa + "\nPlaymaking: " + pla + "\nPassing: " + pas + "\nWinger: " + win + "\nDefending: " + def + "\nScoring: " + sco + "\nSet Pieces: " + sp);
+          //Psicotsi.dump("Age: " + age + "\nTSI: " + currTSI + "\nWage: " + currWAGE + "\nInjured: " + injured + "\nForm: " + frm + "\nStamina: " + sta + "\nKeeper: " + goa + "\nPlaymaking: " + pla + "\nPassing: " + pas + "\nWinger: " + win + "\nDefending: " + def + "\nScoring: " + sco + "\nSet Pieces: " + sp);
 
          this.drawMessage(doc, entryPoint, isGK, undef, injured, age > 27, maxSkill, valMaxSkillHigh, valMaxSkillAvg, valMaxSkillLow, valMaxSkillWage, limit)
 
 
       } catch (e) {
-         dump('e944.2>\n' + e);
+        Psicotsi.dump('[Module: predictPD] [Function: run] ' + e);
       }
 
    },
@@ -298,7 +298,7 @@ var PsicotsiPredictPlayerDetail = {
                }
             }
          } catch (e) {
-            dump('  error at #533 predictPD.js>\n' + e);
+            Psicotsi.dump('[Module: predictPD] [Function: drawMessage] ' + e);
          }
 
          tr.appendChild(td1);
@@ -344,7 +344,9 @@ var PsicotsiPredictPlayerDetail = {
       try {
          var SETT_HIDE_UNDER_SKILLS = PsicotsiPrefs.getBool("hideUnderSkills");
       }
-      catch (e) {}
+      catch (e) {
+        Psicotsi.dump('[Module: predictPD] [Function: drawMessage] ' + e);
+      }
 
       if (!SETT_HIDE_UNDER_SKILLS) {
          // PsicoTSIBox is the default style
@@ -353,7 +355,9 @@ var PsicotsiPredictPlayerDetail = {
 
          try {
             isAlertBoxStyle = PsicotsiPrefs.getBool("showAlertBox");
-         } catch (e) {}
+         } catch (e) {
+            Psicotsi.dump('[Module: predictPD] [Function: drawMessage] ' + e);
+         }
 
          if (isAlertBoxStyle) {
             var title = doc.createElement("strong");
@@ -388,7 +392,7 @@ var PsicotsiPredictPlayerDetail = {
          var SETT_PREF_LEFT = PsicotsiPrefs.getBool("showLeftMenu");
       }
       catch (e) {
-         dump('PsicoTSI error #4711102 >>>\n' + e);
+        Psicotsi.dump('[Module: predictPD] [Function: drawMessage] ' + e);
       }
 
       if (SETT_PREF_LEFT) {

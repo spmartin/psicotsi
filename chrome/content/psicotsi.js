@@ -6,13 +6,12 @@ Psicotsi.run_on_cur_page = [];
 Psicotsi.may_run_on_page = [];
 Psicotsi.core_modules = [PsicotsiPrefs, Psicotsil10n];
 Psicotsi.news = [];
-
+Psicotsi.consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
 
 Psicotsi.globals = [];
 for (Psicotsi.global in this) {
     Psicotsi.globals.push(Psicotsi.global);
 }
-
 
 var PsicotsiMain = {
     new_start: true,
@@ -63,12 +62,12 @@ var PsicotsiMain = {
                         module.init();
                         //dump( "Psicotsi enabled module: " + module.MODULE_NAME + "\n");
                     } catch (e) {
-                        dump("Psicotsi module " + module.MODULE_NAME + " init() exception: " + "\n  " + e + "\n");
+                        Psicotsi.dump("[psicotsi.js] Psicotsi module " + module.MODULE_NAME + " init() exception: " + "\n  " + e + "\n");
                         Components.utils.reportError(e);
                     }
                 }
                 else {
-                    //dump( "Psicotsi disabled module: " + module.MODULE_NAME + "\n" );
+                    //Psicotsi.dump( "[psicotsi.js] Psicotsi disabled module: " + module.MODULE_NAME + "\n" );
                 }
             }
 
@@ -134,7 +133,7 @@ var PsicotsiMain = {
         PsicotsiMain.change(doc);
         var end = new Date();
         var time = (end.getSeconds() - begin.getSeconds()) * 1000 + end.getMilliseconds() - begin.getMilliseconds();
-        // dump( "Psicotsi bezi -cas: " + time + " ms\n" );
+        // Psicotsi.dump( "[psicotsi.js] Psicotsi bezi -cas: " + time + " ms\n" );
         // re-add event listener
         content.addEventListener("DOMSubtreeModified", PsicotsiMain.onPageChange, true);
     },
@@ -146,13 +145,13 @@ var PsicotsiMain = {
         if (Psicotsi.getHref(doc).search(PsicotsiPrefs.getString("HTURL")) > -1) {
             var begin = new Date();
             var time = (begin.getSeconds() - this._unloadtime.getSeconds()) * 1000 + begin.getMilliseconds() - this._unloadtime.getMilliseconds();
-            //dump("load+ccs time: " + time + " ms | " + doc.location.pathname + doc.location.search + '\n');
+            //Psicotsi.dump("[psicotsi.js] load+ccs time: " + time + " ms | " + doc.location.pathname + doc.location.search + '\n');
 
             PsicotsiMain.run(doc);
 
             var end = new Date();
             var time = (end.getSeconds() - begin.getSeconds()) * 1000 + end.getMilliseconds() - begin.getMilliseconds();
-            //dump("run time: " + time + " ms | " + doc.location.pathname + doc.location.search + '\n');
+            //Psicotsi.dump("[psicotsi.js] run time: " + time + " ms | " + doc.location.pathname + doc.location.search + '\n');
             var content = doc.getElementById("content");
             if (content) {
                 content.addEventListener("DOMSubtreeModified", PsicotsiMain.onPageChange, true);
@@ -200,7 +199,7 @@ var PsicotsiMain = {
                         fn.run(doc);
                         //Psicotsi.run_on_cur_page.push({'page':'','module':fn});								
                     } catch (e) {
-                        dump("Psicotsi module " + fn.MODULE_NAME + " run() exception: \n  " + e + "\n");
+                        Psicotsi.dump("[psicotsi.js] Psicotsi module " + fn.MODULE_NAME + " run() exception: \n  " + e + "\n");
                         Components.utils.reportError(e);
                     }
                 });
@@ -213,10 +212,10 @@ var PsicotsiMain = {
 
                         function (fn) {
                             try {
-                                //dump ( "Psicotsi module " + fn.MODULE_NAME + " run() at page " + i + "\n  " );								
+                                //Psicotsi.dump ( "[psicotsi.js] Psicotsi module " + fn.MODULE_NAME + " run() at page " + i + "\n  " );								
                                 fn.run(i, doc);
                             } catch (e) {
-                                dump("Psicotsi module " + fn.MODULE_NAME + " run() exception at page " + i + "\n  " + e + "\n");
+                                Psicotsi.dump("[psicotsi.js] Psicotsi module " + fn.MODULE_NAME + " run() exception at page " + i + "\n  " + e + "\n");
                                 Components.utils.reportError(e);
                             }
                         });
@@ -231,7 +230,7 @@ var PsicotsiMain = {
                     }
                 }
                 for (var j = 0; j < Psicotsi.run_on_cur_page.length; ++j) {
-                    //dump ( "may run " + Psicotsi.run_on_cur_page[j].module.MODULE_NAME + " : page " + Psicotsi.run_on_cur_page[j].page + "\n  " );																
+                    //Psicotsi.dump ( "[psicotsi.js] may run " + Psicotsi.run_on_cur_page[j].module.MODULE_NAME + " : page " + Psicotsi.run_on_cur_page[j].page + "\n  " );																
                 }
 
 
@@ -250,7 +249,7 @@ var PsicotsiMain = {
                 }
             }
         } catch (e) {
-            dump('Psicotsi.run: ' + e + '\n');
+            Psicotsi.dump('[psicotsi.js] Psicotsi.run: ' + e + '\n');
         }
     },
 
@@ -266,7 +265,7 @@ var PsicotsiMain = {
                 try {
                     fn.change(doc);
                 } catch (e) {
-                    dump("Psicotsi module " + fn.MODULE_NAME + " change() exception: \n  " + e + "\n");
+                    Psicotsi.dump("[psicotsi.js] Psicotsi module " + fn.MODULE_NAME + " change() exception: \n  " + e + "\n");
                     Components.utils.reportError(e);
                 }
             });
@@ -280,14 +279,14 @@ var PsicotsiMain = {
                         try {
                             fn.change(i, doc);
                         } catch (e) {
-                            dump("Psicotsi module " + fn.MODULE_NAME + " change() exception at page " + i + "\n  " + e + "\n");
+                            Psicotsi.dump("[psicotsi.js] Psicotsi module " + fn.MODULE_NAME + " change() exception at page " + i + "\n  " + e + "\n");
                             Components.utils.reportError(e);
                         }
                     });
                 }
             }
         }
-        else dump('Psicotsi modules deactivated\n');
+        else Psicotsi.dump('[psicotsi.js] Psicotsi modules deactivated\n');
     }
 
 };
@@ -298,7 +297,11 @@ Psicotsi.isPage = function (page, doc) {
 }
 
 Psicotsi.getHref = function (doc) {
-    return doc.location.href;
+    try {
+      return doc.location.href;
+    } catch (e) {
+      return "";
+    }
 }
 
 
@@ -309,12 +312,12 @@ Psicotsi.registerModulePages = function (module) {
             for (var i = 0; i < module.PAGES.length; ++i) {
                 if (module.ONPAGEPREF_PAGE) Psicotsi.may_run_on_page[module.ONPAGEPREF_PAGE].push(module);
                 else Psicotsi.may_run_on_page[module.PAGES[i]].push(module);
-                //dump(module.PAGES[i]+'\n');
+                //Psicotsi.dump(module.PAGES[i]+'\n');
                 if (Psicotsi.isModuleEnabled(module)) Psicotsi.run_on_page[module.PAGES[i]].push(module);
             }
         }
     } catch (e) {
-        dump('registerModulePages: ' + e + '\n');
+        Psicotsi.dump('[psicotsi.js] registerModulePages: ' + e + '\n');
     }
 }
 
@@ -427,7 +430,7 @@ Psicotsi.LOG = function (msg) {
 }
 
 Psicotsi.reload_module_css = function (doc) {
-    //dump('reload permanents css\n');
+    //Psicotsi.dump('[psicotsi.js] reload permanents css\n');
     // check permanant css
     var isStandard = Psicotsi.isStandardLayout(doc);
 
@@ -483,7 +486,7 @@ Psicotsi.addBoxToSidebar = function (doc, newBoxHeader, newBoxContent, boxId, re
     // Should ideally be checked by the change() function already
     var boxContentId = newBoxContent.id;
     if (!boxContentId) {
-        dump("addBoxToSideBar: error: box content should have an id.\n");
+        Psicotsi.dump("[psicotsi.js] addBoxToSideBar: error: box content should have an id.\n");
         return;
     }
     if (Psicotsi.hasElement(doc, boxId) || Psicotsi.hasElement(doc, boxContentId)) {
@@ -531,7 +534,7 @@ Psicotsi.addBoxToSidebar = function (doc, newBoxHeader, newBoxContent, boxId, re
         if (!altReferenceObject && altReferenceHeader != "first" && altReferenceHeader != "last") {
             // alternative header couldn't be found either
             // place the box on top
-            dump("addBoxToSidebar: Could not find referenceHeader " + referenceHeader + "\n" + "nor alternative referenceHeader " + altReferenceHeader + "\n");
+            Psicotsi.dump("[psicotsi.js] addBoxToSidebar: Could not find referenceHeader " + referenceHeader + "\n" + "nor alternative referenceHeader " + altReferenceHeader + "\n");
             referenceHeader = "first";
         } else {
             referenceObject = altReferenceObject;
@@ -766,7 +769,7 @@ Psicotsi.LoadXML = function (xmlfile) {
     req.send(null);
     var response = req.responseXML;
     if (response.documentElement.nodeName == "parsererror") {
-        dump("error parsing " + xmlfile + "\n");
+        Psicotsi.dump("[psicotsi.js] error parsing " + xmlfile + "\n");
         return null;
     }
     return response;
@@ -817,7 +820,7 @@ Psicotsi.linebreak = function (txt, where) {
         }
         return d.join(" ");
     } catch (e) {
-        dump('LINEBREAK: ' + e + '\n');
+        Psicotsi.dump('[psicotsi.js] LINEBREAK: ' + e + '\n');
     }
 }
 
@@ -842,6 +845,10 @@ Psicotsi.cut_word = function (txt, where) {
         }
         return d.join("");
     } catch (e) {
-        dump('CUT WORD: ' + e + '\n');
+        Psicotsi.dump('[psicotsi.js] CUT WORD: ' + e + '\n');
     }
+}
+
+Psicotsi.dump = function (aMessage) {
+  Psicotsi.consoleService.logStringMessage("PsicoTSI: " + aMessage);
 }

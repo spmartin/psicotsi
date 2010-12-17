@@ -99,7 +99,8 @@ var PsicotsiHelper = {
          skill = link.replace(/.+ll=/i, "").match(/^\d+/);
          if (skill < 0 || skill > 20) throw "Skill (" + skill + ") out of bounds";
       } catch (e) {
-            throw ("In function getValueFromLink()\n - " + e);
+          Psicotsi.dump("[helper.js] [Function: getValueFromLink] " + e);
+          throw ("In function getValueFromLink()\n - " + e);
       }
       return parseInt(skill);
     },
@@ -111,6 +112,7 @@ var PsicotsiHelper = {
            infoTable = infoDiv.childNodes[infoDiv.childNodes.length - 2];
             if (!infoTable.rows) throw ("Unable to find Player's Info Table");
         } catch (e) {
+            Psicotsi.dump("[helper.js] [Function: getInfoTable] " + e);
             throw ("In function getInfoTable()\n - " + e);
         }
         return infoTable;
@@ -121,6 +123,7 @@ var PsicotsiHelper = {
           var links = doc.evaluate("//a[@class='skill']", doc, null, Components.interfaces.nsIDOMXPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
           return (links.snapshotLength > 13)
         } catch (e) {
+            Psicotsi.dump("[helper.js] [Function: getTableExist] " + e);
             throw ("In function getTableExist()\n - " + e);
         }
         return false;
@@ -132,6 +135,7 @@ var PsicotsiHelper = {
             tsi = parseInt(infoTable.rows[1].cells[1].textContent.replace(/[\s]*/gi, ""));
             if (tsi < 0) throw "Negative TSI (" + tsi + ").";
         } catch (e) {
+            Psicotsi.dump("[helper.js] [Function: getTSI] " + e);
             throw ("In function getTSI()\n - " + e);
         }
         return parseInt(tsi);
@@ -146,6 +150,7 @@ var PsicotsiHelper = {
             try {
                 var currencyCode = PsicotsiPrefs.getString("htCurrency");
             } catch (e) {
+                Psicotsi.dump("[helper.js] [Function: getWage] " + e);
                 currencyCode = "EUR";
             }
 
@@ -159,6 +164,7 @@ var PsicotsiHelper = {
                 var rate = PsicotsiPrefs.getString("htCurrencyRate");
 
             } catch (e) {
+                Psicotsi.dump("[helper.js] [Function: getWage] " + e);
                 var currency = "€";
                 var rate = 1.0;
             }
@@ -177,6 +183,7 @@ var PsicotsiHelper = {
 
 
         } catch (e) {
+            Psicotsi.dump("[helper.js] [Function: getWage] " + e);
             throw ("In function getWage()\n - " + e);
         }
 
@@ -188,6 +195,7 @@ var PsicotsiHelper = {
             var container = infoTable.rows[4].cells[1];
             if (container.textContent.search(/\d+/) > -1) return true;
         } catch (e) {
+            Psicotsi.dump("[helper.js] [Function: getInjuries] " + e);
             throw ("In function getInjuries()\n - " + e);
         }
         return false;
@@ -223,16 +231,15 @@ var PsicotsiHelper = {
                 age = node.textContent.match(/\d+/)[0];
             }
             catch (e) {
+               Psicotsi.dump("[helper.js] [Function: getAge] " + e);
                 //Psicotsi.alert("Error in getAge():\nIf you\'re using foxtrick, please disable module \'MovePlayerStatement\'\n '+e);
             }
-            if (age < 17 || age > 99) dump("Age (" + age + ") out of bounds");
+            if (age < 17 || age > 99) Psicotsi.dump("Age (" + age + ") out of bounds");
         } catch (e) {
-            dump("In function getAge()\n - " + e);
+            Psicotsi.dump("[helper.js] [Function: getAge] " + e);
         }
         return parseInt(age);
     },
-
-
 
     // CHECKS IF A PLAYER HAS MORE THAN ONE MAIN SKILL
     undefinedMainSkill: function (vector) {
@@ -255,12 +262,6 @@ var PsicotsiHelper = {
     // CHECKS IF PLAYER IS A GOALKEEPER
     isGoalkeeper: function (maxSkill) {
         return (maxSkill == 5);
-    },
-
-    // FOR DEBUG PURPOSES ONLY
-    debugalert: function (text) {
-        Psicotsi.alert(text);
-        dump(text + "\n");
     },
 
     // ---------------------------------------------------------------------------

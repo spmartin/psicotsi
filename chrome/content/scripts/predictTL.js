@@ -28,7 +28,7 @@ var PsicotsiPredictTransferPage = {
          var SETT_SHOW_SEARCH_PAGE = PsicotsiPrefs.getBool("showSearchPage");
       }
       catch (e) {
-         dump('error #454158484 >>>\n' + e);
+        Psicotsi.dump('[Module: predictTL] [Function: run] ' + e);
       }
 
       if (SETT_SHOW_SEARCH_PAGE) {
@@ -82,7 +82,7 @@ var PsicotsiPredictTransferPage = {
                      var tableExist = false;
                   }
                } catch (e) {
-                  dump('eerdffrr #458158>\n' + e);
+                  Psicotsi.dump('[Module: predictTL] [Function: run] ' + e);
                }
 
                if (ageR == null) {
@@ -103,7 +103,7 @@ var PsicotsiPredictTransferPage = {
                      if (testNode == node.previousSibling.previousSibling) injured = true;
                   }
                } catch (e) {
-                  dump('eerdffrr #451158>\n' + e);
+                  Psicotsi.dump('[Module: predictTL] [Function: run] ' + e);
                }
                if (node == null) {
                   injured = false;
@@ -151,7 +151,7 @@ var PsicotsiPredictTransferPage = {
                      valMaxSkillHigh = PsicotsiHelper.calcMaxSkillGK(currTSI, frm, "High");
                   }
                   catch (e) {
-                     dump('error #344145445  > \n' + e);
+                    Psicotsi.dump('[Module: predictTL] [Function: run] ' + e);
                   }
                   valMaxSkillWage = 0;
 
@@ -161,6 +161,7 @@ var PsicotsiPredictTransferPage = {
                var tableExist = true;
             }
             catch (e) {
+               Psicotsi.dump('[Module: predictTL] [Function: run] ' + e);
                var tableExist = false;
             }
 
@@ -214,7 +215,9 @@ var PsicotsiPredictTransferPage = {
       var headerText = "PsicoTSI Terminus Edition";
       try {
          isAlertBoxStyle = PsicotsiPrefs.getBool("showAlertBox");
-      } catch (e) {}
+      } catch (e) {
+        Psicotsi.dump('[Module: predictTL] [Function: drawMessageInSearchPage] ' + e);      
+      }
 
       if (isAlertBoxStyle) {
          al_div.setAttribute("class", "alert");
