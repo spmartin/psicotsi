@@ -38,16 +38,7 @@ var PsicotsiPreferencesDialog = {
 
     initMainPref: function (doc) {
         var boolPrefs = this.initOptPrefs();
-        for (var i = 0; i < boolPrefs.length; i++) {
-            try {
-                var temp = boolPrefs[i];
-                document.getElementById(temp).checked = PsicotsiPrefs.getBool(temp);
-            } catch (e) {
-                Psicotsi.dump(e);
-            }
-        }
-
-
+        
         var modules_list = doc.getElementById("main_list");
         modules_list.setAttribute("style", "background-color:ButtonFace !important; color: ButtonText !important;");
 

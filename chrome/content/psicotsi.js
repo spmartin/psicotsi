@@ -242,7 +242,6 @@ var PsicotsiMain = {
                     PsicotsiMain.isStandard = Psicotsi.isStandardLayout(doc);
 
                     PsicotsiMain.new_start = false;
-                    Psicotsi.unload_module_css();
                 }
             }
         } catch (e) {
