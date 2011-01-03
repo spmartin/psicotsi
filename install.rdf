@@ -4,7 +4,7 @@
          xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
   <RDF:Description RDF:about="urn:mozilla:install-manifest"
                    em:id="{7E77F5DF-8022-40e3-9122-F03DEBEFC43B}"
-                   em:version="1.0.25.6"
+                   em:version="1.0.25.8"
                    em:type="2"
                    em:name="PsicoTSI"
                    em:description="Predicts skills sub-levels using TSI."
