@@ -1,33 +1,25 @@
 <?xml version="1.0"?>
-
-<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
-  <Description about="urn:mozilla:install-manifest">
-    <em:id>{7E77F5DF-8022-40e3-9122-F03DEBEFC43B}</em:id>
-    <em:version>1.0.25.5</em:version>
-    <em:type>2</em:type>
-
-    <!-- Target Application this extension can install into, 
-         with minimum and maximum supported versions. --> 
-    <em:targetApplication>
-      <Description>
-        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-        <em:minVersion>3.5</em:minVersion>
-        <em:maxVersion>4.0b9pre</em:maxVersion>
-      </Description>
-    </em:targetApplication>
-   
-    <!-- Front End MetaData -->
-    <em:name>PsicoTSI</em:name>
-    <em:description>Predicts skills sub-levels using TSI.</em:description>
-    <em:creator>Re4Ver</em:creator>
-
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:id="{7E77F5DF-8022-40e3-9122-F03DEBEFC43B}"
+                   em:version="1.0.25.6"
+                   em:type="2"
+                   em:name="PsicoTSI"
+                   em:description="Predicts skills sub-levels using TSI."
+                   em:creator="Re4Ver"
+                   em:homepageURL="http://www.psicotsi.com/"
+                   em:optionsURL="chrome://psicotsi/content/preferences-dialog.xul"
+                   em:iconURL="chrome://psicotsi/skin/icon.png"
+                   em:updateURL="http://psicotsi.sourceforge.net/releases/firefox/update.rdf"
+                   em:updateKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC3Ffu1VqIFiB3Jqo78oAlGsSqGUyrbEXgvpSrsS6SZMKyUTHHsTzMnbS3JVphUKjktI6inBJVvOWPC310m31+wHMiC/T5HWaqYgzFFH1A4CVZX2Jfr/sdC/mEyQb75C0LJM26Qy569JKh7sxusWo4/pz0GDxVJACsF7kiWYIpjOQIDAQAB">
+    <em:targetApplication RDF:resource="rdf:#$0l7xl3"/>
     <em:developer>Re4Ver</em:developer>
     <em:developer>smates</em:developer>
     <em:developer>Lizardopoli</em:developer>
-
-    <em:translator>Basque - -beta (10083420)</em:translator>  
-    <em:translator>Bosanski - ljushaff (1103875)</em:translator>  
+    <em:translator>Basque - -beta (10083420)</em:translator>
+    <em:translator>Bosanski - ljushaff (1103875)</em:translator>
     <em:translator>Čeština - smates (1682965)</em:translator>
     <em:translator>Dansk - LasseSvendsen (1499168)</em:translator>
     <em:translator>Deutsch - DerKanzler (141589), Mod-spambot (333791)</em:translator>
@@ -40,7 +32,7 @@
     <em:translator>Latviešu - VadimS (231207)</em:translator>
     <em:translator>Magyar - drideg (579834)</em:translator>
     <em:translator>Nederlands - eekels (768188)</em:translator>
-    <em:translator>فارسی - Slash-ss (9630939)</em:translator>    
+    <em:translator>فارسی - Slash-ss (9630939)</em:translator>
     <em:translator>Polski - lemurek (1813780)</em:translator>
     <em:translator>Português - Mr_Nuno_Alves (1422600)</em:translator>
     <em:translator>Português (Brasil) - MarceloFBrandao (715122), Ruivao (1639784)</em:translator>
@@ -54,9 +46,9 @@
     <em:translator>Русский - VadimS (231207)</em:translator>
     <em:translator>Српски - ljushaff (1103875)</em:translator>
     <em:translator>Українська - Grif_07 (527635)</em:translator>
-
-    <em:homepageURL>http://www.psicotsi.com/</em:homepageURL>
- 		<em:optionsURL>chrome://psicotsi/content/preferences-dialog.xul</em:optionsURL>
- 		<em:iconURL>chrome://psicotsi/skin/icon.png</em:iconURL>
-  </Description>
-</RDF>
+  </RDF:Description>
+  <RDF:Description RDF:about="rdf:#$0l7xl3"
+                   em:id="{ec8030f7-c20a-464f-9b0e-13a3a9e97384}"
+                   em:minVersion="3.5"
+                   em:maxVersion="4.0.*" />
+</RDF:RDF>
